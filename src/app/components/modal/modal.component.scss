@@ -1,0 +1,56 @@
+@import "../../../styles/variables";
+
+/* Estilos generales para el modal */
+.modal {
+  /* Ocultar el modal por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos para el contenido del modal */
+.modal-content {
+  background-color: map-get($colors, "white");
+  padding: 20px;
+  border: 1px solid map-get($colors, "gray");
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+  border-radius: 10px;
+  .modal-body {
+    text-align: center;
+  }
+  .modal-footer {
+    border-top: 1px solid map-get($colors, "gray");
+  }
+}
+
+/* Estilos para el botón de cerrar */
+.close {
+  color: map-get($colors, "gray");
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: map-get($colors, "dark");
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.custom-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

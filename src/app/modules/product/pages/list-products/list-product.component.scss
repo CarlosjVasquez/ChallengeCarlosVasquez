@@ -1,0 +1,11 @@
+.content-table {
+  width: 100%;
+  overflow-y: auto;
+}
+
+.footer-table {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

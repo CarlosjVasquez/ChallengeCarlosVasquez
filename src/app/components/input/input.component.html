@@ -1,0 +1,34 @@
+<div class="form-group">
+  <label
+    class="form-label"
+    [class.is-disabled]="disabled"
+    [for]="id"
+    *ngIf="label"
+    >{{ label }}</label
+  >
+  <input
+    class="form-input"
+    [class.is-invalid]="
+      formControl.invalid && (formControl.dirty || formControl.touched)
+    "
+    [type]="type"
+    [id]="id"
+    [name]="name"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [required]="required"
+    [formControl]="formControl"
+    [minlength]="minlength"
+    [maxlength]="maxlength"
+    [min]="min"
+    [max]="max"
+    (input)="onHandleInput($event)"
+    (change)="onHandleChange($event)"
+  />
+  <span
+    class="form-error"
+    *ngIf="formControl.errors && (formControl.dirty || formControl.touched)"
+  >
+    {{ getErrorMessage() }}
+  </span>
+</div>

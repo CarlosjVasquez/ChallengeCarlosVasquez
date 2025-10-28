@@ -1,0 +1,35 @@
+@import "../../../styles/variables";
+
+.content {
+  position: relative;
+}
+
+.popover-content {
+  display: none;
+  position: absolute;
+  background-color: map-get($colors, "white");
+  color: map-get($colors, "dark");
+  padding: 10px;
+  border: 1px solid map-get($colors, "gray");
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 150px;
+  top: 20px;
+  right: 0;
+}
+
+.popover-trigger:hover + .popover-content {
+  display: block;
+  font-size: 0.8rem;
+}
+
+.popover-content::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent map-get($colors, "white") transparent;
+}

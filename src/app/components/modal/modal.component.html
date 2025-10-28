@@ -1,0 +1,29 @@
+@if (show) {
+<div class="modal">
+  <div class="modal-content">
+    <div class="modal-body">
+      <p>{{ description }}</p>
+    </div>
+
+    <div class="modal-footer pt-3">
+      <div class="row">
+        <div class="col">
+          <custom-button
+            (onEventClick)="onCancel()"
+            class="custom-btn"
+            color="body"
+            label="Cancelar"
+          />
+        </div>
+        <div class="col">
+          <custom-button
+            (onEventClick)="onSuccess()"
+            class="custom-btn"
+            label="Confirmar"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}

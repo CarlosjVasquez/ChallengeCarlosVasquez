@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderListProductComponent match to snapshot 1`] = `
+<div
+  id="root2"
+>
+  <div
+    class="header"
+  >
+    <search>
+      <custom-input
+        id="search"
+        name="search"
+        placeholder="Search..."
+      >
+        <div
+          class="form-group"
+        >
+          
+          <input
+            class="form-input ng-untouched ng-pristine ng-valid"
+            id="search"
+            max="undefined"
+            min="undefined"
+            placeholder="Search..."
+            type="text"
+          />
+          
+        </div>
+      </custom-input>
+    </search>
+    <custom-button>
+      <button
+        class="btn btn-md btn-primary"
+        type="button"
+      >
+         Agregar
+
+      </button>
+    </custom-button>
+  </div>
+</div>
+`;

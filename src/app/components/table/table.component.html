@@ -1,0 +1,69 @@
+<table class="table">
+  <thead>
+    <tr>
+      @for (column of columns; track $index) {
+      <th [style.minWidth]="column.width + 'px'">
+        <div class="content-column" [style.justifyContent]="column.align">
+          <span class="mr-2">{{ column.label }}</span>
+          @if (column.popover) {
+          <popover
+            [description]="column.popover"
+            icon="assets/icons/informacion.png"
+            [size]="18"
+          />
+          }
+        </div>
+      </th>
+      }
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @if ( data.length > 0) { @for (row of data; track $index) {
+    <tr>
+      @for (column of columns; track $index) {
+      <td [style.minWidth]="column.width + 'px'">
+        <div class="content-column" [style.justifyContent]="column.align">
+          @switch (column.type) { @case ('text') {
+          <span>{{ row[column.key] }}</span>
+          } @case ('number') {
+          <span>{{ row[column.key] | number }}</span>
+          } @case ('date') {
+          {{ row[column.key] | date : "MM/dd/yyyy" }}
+          } @case ('image') { @if (row[column.key]) {
+          <div class="table-img">
+            <picture class="table-img">
+              <img [src]="row[column.key]" [alt]="row[column.label]" />
+            </picture>
+          </div>
+          } @else {
+          <div class="table-img">
+            <picture>
+              <img [src]="row[column.key]" [alt]="row[column.label]" />
+            </picture>
+          </div>
+
+          } } @default {
+          <span></span>
+          } }
+        </div>
+      </td>
+      }
+      <td>
+        <dropdown
+          icon="assets/icons/navegacion.png"
+          [size]="20"
+          [options]="options"
+          (onClickEventEmitter)="onDropdownClick($event, row)"
+        />
+      </td>
+    </tr>
+    } } @else {
+    <tr>
+      <td class="not-data" [attr.colspan]="columns.length + 1">
+        <span>No hay datos registrados</span>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>

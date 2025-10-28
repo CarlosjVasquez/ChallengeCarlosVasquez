@@ -1,0 +1,12 @@
+<select
+  name="itemPage"
+  id="itemPage"
+  [(ngModel)]="selectedOption"
+  (ngModelChange)="onHandleChange($event)"
+>
+  @for (option of options; track $index) {
+  <option value="{{ option.value }}">
+    {{ option.label }}
+  </option>
+  }
+</select>

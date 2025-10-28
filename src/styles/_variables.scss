@@ -1,0 +1,57 @@
+$colors: (
+  "primary": #FFDD00,
+  "secondary": #0F265C,
+  "success": #28a745,
+  "danger": #dc3545,
+  "warning": #ffc107,
+  "info": #17a2b8,
+  "light": #bcbcbc,
+  "dark": #343a40,
+  "body": #f4f6f9,
+  "white": #fff,
+  "gray": #ccc,
+);
+
+$grid-columns: 12;
+$gutter-width: 1rem;
+
+$breakpoints: (
+  xsmall: 576px,
+  small: 768px,
+  medium: 992px,
+  large: 1200px,
+  xlarge: 1400px,
+);
+
+$container-sizes: (
+  xs: 100%,
+  sm: 95%,
+  md: 90%,
+  lg: 85%,
+  xl: 80%,
+  xxl: 75%,
+);
+
+$container-sm-sizes: (
+  xs: 100%,
+  sm: 75%,
+  md: 50%,
+  lg: 50%,
+  xl: 40%,
+  xxl: 45%,
+);
+
+$padding-margin-sizes: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 1rem,
+  4: 1.5rem,
+  5: 3rem,
+);
+
+$btn-sizes: (
+  sm: 0.25rem 0.5rem,
+  md: 0.5rem 1rem,
+  lg: 0.75rem 1.5rem,
+);

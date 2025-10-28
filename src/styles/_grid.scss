@@ -1,0 +1,42 @@
+@use "sass:math";
+
+@import "mixins";
+
+.row {
+  @include make-grid();
+}
+
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    @include make-col($i);
+  }
+}
+
+@each $breakpoint, $size in $breakpoints {
+  @for $i from 1 through $grid-columns {
+    .col-#{$breakpoint}-#{$i} {
+      @include respond-to($breakpoint) {
+        @include make-col($i);
+      }
+    }
+  }
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  padding-right: math.div($gutter-width, 2);
+  padding-left: math.div($gutter-width, 2);
+  box-sizing: border-box;
+
+  > * {
+    width: 100%;
+    box-sizing: inherit;
+  }
+
+  * {
+    box-sizing: inherit;
+  }
+}

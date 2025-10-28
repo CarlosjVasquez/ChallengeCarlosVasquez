@@ -1,0 +1,98 @@
+<div class="mt-3">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col">
+        <custom-input
+          label="ID"
+          id="id"
+          name="id"
+          [onlyLetters]="true"
+          [disabled]="edit"
+          [formControl]="formControlType('id')"
+        />
+      </div>
+      <div class="col">
+        <custom-input
+          label="Nombre"
+          id="name"
+          name="name"
+          [minlength]="5"
+          [maxlength]="100"
+          [required]="true"
+          [onlyLetters]="true"
+          [formControl]="formControlType('name')"
+        />
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <custom-input
+          label="Descripción"
+          id="description"
+          name="description"
+          [minlength]="10"
+          [maxlength]="200"
+          [required]="true"
+          [onlyLetters]="true"
+          [formControl]="formControlType('description')"
+        />
+      </div>
+      <div class="col">
+        <custom-input
+          label="Logo"
+          id="logo"
+          name="logo"
+          [required]="true"
+          [formControl]="formControlType('logo')"
+        />
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <custom-input
+          type="date"
+          label="Fecha de Liberación"
+          id="date_release"
+          name="date_release"
+          [required]="true"
+          [min]="currentDate()"
+          (onChangeEventEmitter)="calcdate_revision()"
+          [formControl]="formControlType('date_release')"
+        />
+      </div>
+      <div class="col">
+        <custom-input
+          label="Fecha de Revisión"
+          id="date_revision"
+          name="date_revision"
+          type="date"
+          [required]="true"
+          [disabled]="true"
+          [formControl]="formControlType('date_revision')"
+        />
+      </div>
+    </div>
+    <div class="row mt-5">
+      @if(!edit) {
+      <div class="col">
+        <custom-button
+          type="reset"
+          class="content-btn-right"
+          label="Reiniciar"
+          asda
+          color="body"
+        />
+      </div>
+      }
+
+      <div class="col">
+        <custom-button
+          type="submit"
+          [class]="edit ? 'content-btn-center' : 'content-btn-left'"
+          label="Enviar"
+          [disabled]="form.invalid"
+        />
+      </div>
+    </div>
+  </form>
+</div>

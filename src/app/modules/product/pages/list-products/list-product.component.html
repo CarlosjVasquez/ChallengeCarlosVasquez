@@ -1,0 +1,28 @@
+<div class="container">
+  <header-list-product (onInputEventemitter)="onSearch($event)" />
+  <div class="my-3 p-4 bg-white">
+    <div class="content-table">
+      <custom-table
+        class="table"
+        [data]="filterListData"
+        [columns]="listColumns"
+        [options]="options"
+        (onDropdownClickEventEmitter)="onControlEvents($event)"
+      ></custom-table>
+    </div>
+    <div class="footer-table mt-3">
+      <results [results]="listData.length || 0" label="Resultados" />
+      <custom-select
+        [options]="optionsItemPage"
+        (onChangeEventEmmiter)="onHandleSelectItemPage($event)"
+      />
+    </div>
+  </div>
+</div>
+
+<custom-modal
+  [show]="showModal"
+  (onCancelEventEmmiter)="cancelModal()"
+  (onSuccessEventEmmiter)="confirmDelete()"
+  description="¿Estás seguro de eliminar el produto {{ selectedProduct.name }}?"
+/>

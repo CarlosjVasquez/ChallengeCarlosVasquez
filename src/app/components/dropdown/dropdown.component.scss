@@ -1,0 +1,48 @@
+@import "../../../styles/variables";
+
+/* Estilos generales del dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Estilos del botón que activa el dropdown */
+.dropdown-toggle {
+  border: none;
+  cursor: pointer;
+}
+
+/* Estilos del menú desplegable */
+.dropdown-menu {
+  position: absolute;
+  width: 150px;
+  top: 0;
+  left: -150px;
+  background-color: map-get($colors, "white");
+  color: map-get($colors, "dark");
+  border: 1px solid map-get($colors, "gray");
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+  z-index: 1;
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-menu li a {
+  color: map-get($colors, "gray");
+  text-decoration: none;
+  display: block;
+  font-size: 0.8rem;
+}
+
+/* Mostrar el menú cuando se hace hover sobre el botón */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}

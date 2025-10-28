@@ -1,0 +1,283 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormProductComponent match to snapshot 1`] = `
+<div
+  id="root2"
+>
+  <div
+    class="mt-3"
+  >
+    <form
+      class="ng-untouched ng-pristine ng-valid"
+      novalidate=""
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col"
+        >
+          <custom-input
+            class="ng-untouched ng-pristine ng-valid"
+            id="id"
+            label="ID"
+            maxlength="10"
+            minlength="3"
+            name="id"
+            required=""
+          >
+            <div
+              class="form-group"
+            >
+              <label
+                class="form-label"
+                for="id"
+              >
+                ID
+              </label>
+              
+              <input
+                class="form-input ng-untouched ng-pristine ng-invalid"
+                id="id"
+                max="undefined"
+                maxlength="10"
+                min="undefined"
+                minlength="3"
+                placeholder=""
+                required=""
+                type="text"
+              />
+              
+            </div>
+          </custom-input>
+        </div>
+        <div
+          class="col"
+        >
+          <custom-input
+            class="ng-untouched ng-pristine ng-valid"
+            id="name"
+            label="Nombre"
+            maxlength="100"
+            minlength="5"
+            name="name"
+            required=""
+          >
+            <div
+              class="form-group"
+            >
+              <label
+                class="form-label"
+                for="name"
+              >
+                Nombre
+              </label>
+              
+              <input
+                class="form-input ng-untouched ng-pristine ng-invalid"
+                id="name"
+                max="undefined"
+                maxlength="100"
+                min="undefined"
+                minlength="5"
+                placeholder=""
+                required=""
+                type="text"
+              />
+              
+            </div>
+          </custom-input>
+        </div>
+      </div>
+      <div
+        class="row mt-3"
+      >
+        <div
+          class="col"
+        >
+          <custom-input
+            class="ng-untouched ng-pristine ng-valid"
+            id="description"
+            label="Descripción"
+            maxlength="200"
+            minlength="10"
+            name="description"
+            required=""
+          >
+            <div
+              class="form-group"
+            >
+              <label
+                class="form-label"
+                for="description"
+              >
+                Descripción
+              </label>
+              
+              <input
+                class="form-input ng-untouched ng-pristine ng-invalid"
+                id="description"
+                max="undefined"
+                maxlength="200"
+                min="undefined"
+                minlength="10"
+                placeholder=""
+                required=""
+                type="text"
+              />
+              
+            </div>
+          </custom-input>
+        </div>
+        <div
+          class="col"
+        >
+          <custom-input
+            class="ng-untouched ng-pristine ng-valid"
+            id="logo"
+            label="Logo"
+            name="logo"
+            required=""
+          >
+            <div
+              class="form-group"
+            >
+              <label
+                class="form-label"
+                for="logo"
+              >
+                Logo
+              </label>
+              
+              <input
+                class="form-input ng-untouched ng-pristine ng-invalid"
+                id="logo"
+                max="undefined"
+                min="undefined"
+                placeholder=""
+                required=""
+                type="text"
+              />
+              
+            </div>
+          </custom-input>
+        </div>
+      </div>
+      <div
+        class="row mt-3"
+      >
+        <div
+          class="col"
+        >
+          <custom-input
+            class="ng-untouched ng-pristine ng-valid"
+            id="date_release"
+            label="Fecha de Liberación"
+            name="date_release"
+            required=""
+            type="date"
+          >
+            <div
+              class="form-group"
+            >
+              <label
+                class="form-label"
+                for="date_release"
+              >
+                Fecha de Liberación
+              </label>
+              
+              <input
+                class="form-input ng-untouched ng-pristine ng-invalid"
+                id="date_release"
+                max="undefined"
+                min="2024-07-11"
+                placeholder=""
+                required=""
+                type="date"
+              />
+              
+            </div>
+          </custom-input>
+        </div>
+        <div
+          class="col"
+        >
+          <custom-input
+            class="ng-untouched ng-pristine ng-valid"
+            id="date_revision"
+            label="Fecha de Revisión"
+            name="date_revision"
+            required=""
+            type="date"
+          >
+            <div
+              class="form-group"
+            >
+              <label
+                class="form-label is-disabled"
+                for="date_revision"
+              >
+                Fecha de Revisión
+              </label>
+              
+              <input
+                class="form-input ng-untouched ng-pristine ng-invalid"
+                disabled=""
+                id="date_revision"
+                max="undefined"
+                min="undefined"
+                placeholder=""
+                required=""
+                type="date"
+              />
+              
+            </div>
+          </custom-input>
+        </div>
+      </div>
+      <div
+        class="row mt-5"
+      >
+        <div
+          class="col"
+        >
+          <custom-button
+            asda=""
+            class="content-btn-right"
+            color="body"
+            label="Reiniciar"
+            type="reset"
+          >
+            <button
+              class="btn btn-body btn-md"
+              type="reset"
+            >
+               Reiniciar
+
+            </button>
+          </custom-button>
+        </div>
+        
+        <div
+          class="col"
+        >
+          <custom-button
+            class="content-btn-left"
+            label="Enviar"
+            type="submit"
+          >
+            <button
+              class="btn btn-md btn-primary"
+              type="submit"
+            >
+               Enviar
+
+            </button>
+          </custom-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;

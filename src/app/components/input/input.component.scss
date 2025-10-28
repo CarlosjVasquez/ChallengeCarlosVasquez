@@ -1,0 +1,39 @@
+@import "../../../styles/variables";
+
+.form-group {
+  text-align: start;
+}
+
+.form-label {
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.is-disabled {
+  color: map-get($colors, "light");
+}
+
+.form-input {
+  width: 100%;
+  display: block;
+  min-width: 150px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid map-get($colors, "gray");
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+      outline: none;
+      border-color: map-get($colors, "primary");
+  }
+
+  &.is-invalid {
+      border-color: map-get($colors, "danger");
+  }
+}
+
+.form-error {
+  color: map-get($colors, "danger");
+  font-size: 0.8rem;
+}

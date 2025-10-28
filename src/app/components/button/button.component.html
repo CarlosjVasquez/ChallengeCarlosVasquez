@@ -1,0 +1,9 @@
+<button
+  [type]="type"
+  class="btn btn-{{ color }} btn-{{ size }}"
+  [class.is-btn-disabled]="disabled"
+  (click)="onHandleClick()"
+  [disabled]="disabled"
+>
+  {{ label }}
+</button>

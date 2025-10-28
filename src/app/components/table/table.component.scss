@@ -1,0 +1,52 @@
+@import "../../../styles/variables";
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  background-color: transparent;
+
+  th,
+  td {
+    padding: 0.75rem;
+    vertical-align: center;
+  }
+
+  thead {
+    background: map-get($colors, "body");
+    th {
+      vertical-align: bottom;
+      border-bottom: 2px solid map-get($colors, "gray");
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 2px solid map-get($colors, "gray");
+    }
+  }
+}
+
+.table-img {
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  border-radius: 9999px;
+  & img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.content-column {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.not-data {
+  text-align: center;
+}

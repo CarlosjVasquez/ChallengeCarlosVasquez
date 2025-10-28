@@ -1,0 +1,31 @@
+@import "../../../../../styles/variables";
+
+.title {
+  border-bottom: 1px map-get($colors, "secondary") solid;
+  text-align: center;
+}
+
+.content {
+  position: relative;
+}
+
+.content-x {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.close {
+  color: map-get($colors, "gray");
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: map-get($colors, "dark");
+  text-decoration: none;
+  cursor: pointer;
+}
