@@ -90,7 +90,7 @@
           type="submit"
           [class]="edit ? 'content-btn-center' : 'content-btn-left'"
           label="Enviar"
-          [disabled]="form.invalid"
+          [disabled]="form.invalid || !form.dirty"
         />
       </div>
     </div>

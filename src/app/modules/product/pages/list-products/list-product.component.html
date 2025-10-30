@@ -24,5 +24,7 @@
   [show]="showModal"
   (onCancelEventEmmiter)="cancelModal()"
   (onSuccessEventEmmiter)="confirmDelete()"
-  description="¿Estás seguro de eliminar el produto {{ selectedProduct.name }}?"
+  description="¿Estás seguro de eliminar el produto {{
+    selectedProduct?.name
+  }}?"
 />

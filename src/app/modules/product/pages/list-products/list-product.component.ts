@@ -7,7 +7,10 @@ import {
   TableComponent,
 } from '@components/table/table.component';
 import { ResultsComponent } from '@components/results/results.component';
-import { OtionsSelect, SelectComponent } from '@components/select/select.component';
+import {
+  OtionsSelect,
+  SelectComponent,
+} from '@components/select/select.component';
 import { ModalComponent } from '@components/modal/modal.component';
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
@@ -74,7 +77,7 @@ export class ListProductComponent implements OnDestroy {
   ];
   listData: Product[] = [];
   filterListData: Product[] = [];
-  selectedProduct: Product = new Product('', '', '', '', '', '');
+  selectedProduct!: Product | null;
   optionsItemPage: OtionsSelect[] = [
     { label: '5', value: 5 },
     { label: '10', value: 10 },
@@ -110,7 +113,8 @@ export class ListProductComponent implements OnDestroy {
   }
 
   onDeleteProduct(data: Data) {
-    this.onHandleSelectProduct(data);
+    const product: Product = data as Product;
+    this.onHandleSelectProduct(product);
     this.openModal();
   }
 
@@ -119,13 +123,11 @@ export class ListProductComponent implements OnDestroy {
     this.cancelModal();
   }
 
-  onHandleSelectProduct(data: Data) {
-    const product: Product = data as Product;
+  onHandleSelectProduct(product: Product | null) {
     this.productService.selectProduct(product);
   }
 
-  onHandleUpdate(data: Data) {
-    const productUpdate: Product = data as Product;
+  onHandleUpdate(productUpdate: Product | null) {
     this.onHandleSelectProduct(productUpdate);
     this.router.navigate(['/products/update']);
   }
@@ -139,14 +141,16 @@ export class ListProductComponent implements OnDestroy {
   }
 
   cancelModal() {
-    const product = new Product('', '', '', '', '', '');
-    this.onHandleSelectProduct(product);
+    this.onHandleSelectProduct(null);
     this.closeModal();
   }
 
   onControlEvents({ id, data }: DropdownEvent) {
     if (id === 1) this.onDeleteProduct(data);
-    if (id === 2) this.onHandleUpdate(data);
+    if (id === 2) {
+      const product: Product = data as Product;
+      this.onHandleUpdate(product);
+    }
   }
 
   ngOnDestroy(): void {

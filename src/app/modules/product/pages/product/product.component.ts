@@ -3,6 +3,7 @@ import { FormProductComponent } from '../../components/form-product/form-product
 import { Router } from '@angular/router';
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -14,19 +15,27 @@ import { ProductService } from '../../services/product.service';
 export class ProductComponent implements OnInit {
   title: string = 'Formulario de Registro';
   edit: boolean = false;
+  selectedProduct!: Product | null;
+  private readonly subscriptionSelectedProduct: Subscription;
 
-  constructor(private readonly router: Router, private readonly productService: ProductService) {
-    if (this.router.url === '/product/update') this.edit = true;
+  constructor(
+    private readonly router: Router,
+    private readonly productService: ProductService
+  ) {
+    this.subscriptionSelectedProduct =
+      this.productService.selectedProduct$.subscribe((value) => {
+        this.selectedProduct = value;
+      });
+    if (this.router.url === '/products/update') this.edit = true;
   }
 
   ngOnInit(): void {
-    if (this.edit) {
-      this.title = 'Actualizar Producto';
-    }
+    if (!this.selectedProduct && this.edit) this.router.navigate(['/products']);
+    if (this.edit) this.title = 'Actualizar Producto';
   }
 
   clearSelectProduct() {
-    this.productService.selectProduct(new Product('', '', '', '', '', ''));
+    this.productService.selectProduct(null);
     this.router.navigate(['/products']);
   }
 
@@ -35,5 +44,9 @@ export class ProductComponent implements OnInit {
       ? this.productService.updateProduct(product)
       : this.productService.addProduct(product);
     this.clearSelectProduct();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionSelectedProduct.unsubscribe();
   }
 }

@@ -1,30 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { By } from '@angular/platform-browser';
+import { ButtonComponent } from '@components/button/button.component';
+import { SearchComponent } from '@components/search/search.component';
 
 import { HeaderListProductComponent } from './header-list-product.component';
-import { By } from '@angular/platform-browser';
-import { ButtonComponent } from '../../../../components/button/button.component';
-import { InputComponent } from '../../../../components/input/input.component';
-import { Router, RouterModule } from '@angular/router';
-import { ProductComponent } from '../../pages/product/product.component';
 
 describe('HeaderListProductComponent', () => {
   let component: HeaderListProductComponent;
   let fixture: ComponentFixture<HeaderListProductComponent>;
-  let compiled: HTMLElement;
   let router: Router;
 
   beforeEach(async () => {
+    const routerMock = {
+      navigate: jest.fn(),
+    };
+
     await TestBed.configureTestingModule({
-      providers: [
-        HeaderListProductComponent,
-        ButtonComponent,
-        ProductComponent,
-      ],
-      imports: [
-        RouterModule.forRoot([
-          { path: 'product/create', component: ProductComponent },
-        ]),
-      ],
+      imports: [HeaderListProductComponent, ButtonComponent, SearchComponent],
+      providers: [{ provide: Router, useValue: routerMock }],
     }).compileComponents();
 
     router = TestBed.inject(Router);
@@ -34,60 +28,65 @@ describe('HeaderListProductComponent', () => {
     fixture = TestBed.createComponent(HeaderListProductComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    compiled = fixture.nativeElement;
   });
 
-  test('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  test('should button', () => {
-    const button = fixture.debugElement.query(By.directive(ButtonComponent));
-    expect(button).toBeTruthy();
+  it('should render search component', () => {
+    const searchElement = fixture.debugElement.query(
+      By.directive(SearchComponent)
+    );
+    expect(searchElement).toBeTruthy();
   });
 
-  test('should input', () => {
-    const input = fixture.debugElement.query(By.directive(InputComponent));
-    expect(input).toBeTruthy();
+  it('should render button component', () => {
+    const buttonElement = fixture.debugElement.query(
+      By.directive(ButtonComponent)
+    );
+    expect(buttonElement).toBeTruthy();
   });
 
-  test('should input', () => {
-    const input = fixture.debugElement.query(By.directive(InputComponent));
-    expect(input).toBeTruthy();
-  });
-
-  test('should navigate to /product/create on add product', () => {
+  it('should navigate to /products/create on add product', () => {
     const navigateSpy = jest.spyOn(router, 'navigate');
     component.onAddProduct();
-    expect(navigateSpy).toHaveBeenCalledWith(['/product/create']);
+    expect(navigateSpy).toHaveBeenCalledWith(['/products/create']);
   });
 
-  test('should emit search input event', () => {
+  it('should emit search input event when onHandleSubmit is called', () => {
     const searchValue = 'test search';
-    let emittedSearch: string | undefined;
-
-    component.onInputEventemitter.subscribe((value) => {
-      emittedSearch = value;
-    });
+    jest.spyOn(component.onInputEventemitter, 'emit');
 
     component.onHandleSubmit(searchValue);
 
-    expect(emittedSearch).toEqual(searchValue);
+    expect(component.onInputEventemitter.emit).toHaveBeenCalledWith(
+      searchValue
+    );
   });
 
-  test('should emit search input event from button click', () => {
-    const searchValue = 'test search';
-    let emittedSearch: string | undefined;
+  it('should call onAddProduct when button is clicked', () => {
+    const navigateSpy = jest.spyOn(router, 'navigate');
 
-    component.onInputEventemitter.subscribe((value) => {
-      emittedSearch = value;
-    });
+    const buttonElement = fixture.debugElement.query(
+      By.directive(ButtonComponent)
+    );
+    buttonElement.triggerEventHandler('onEventClick', null);
 
-    const button = fixture.debugElement.query(By.directive(ButtonComponent));
-    button.triggerEventHandler('click', null);
+    expect(navigateSpy).toHaveBeenCalledWith(['/products/create']);
+  });
 
-    fixture.whenStable().then(() => {
-      expect(emittedSearch).toEqual(searchValue);
-    });
+  it('should call onHandleSubmit when search component emits', () => {
+    const searchValue = 'search term';
+    jest.spyOn(component.onInputEventemitter, 'emit');
+
+    const searchElement = fixture.debugElement.query(
+      By.directive(SearchComponent)
+    );
+    searchElement.triggerEventHandler('onInputEventemitter', searchValue);
+
+    expect(component.onInputEventemitter.emit).toHaveBeenCalledWith(
+      searchValue
+    );
   });
 });
