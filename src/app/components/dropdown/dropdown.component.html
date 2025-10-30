@@ -1,11 +1,16 @@
 <div class="dropdown">
   @if (icon) {
-  <custom-icon class="dropdown-toggle" [src]="icon" [size]="size" />
+  <custom-icon
+    (click)="handleClick()"
+    class="dropdown-toggle"
+    [src]="icon"
+    [size]="size"
+  />
   } @if (label) {
   <span class="dropdown-toggle">{{ label }}</span>
   }
 
-  <ul class="dropdown-menu">
+  <ul [class]="{ 'dropdown-menu': true, 'dropdown-show': show }">
     @for (option of options; track $index) {
     <li (click)="onClick(option.id)">
       <span> {{ option.label }} </span>

@@ -1,6 +1,6 @@
 $colors: (
-  "primary": #FFDD00,
-  "secondary": #0F265C,
+  "primary": #ffdd00,
+  "secondary": #0f265c,
   "success": #28a745,
   "danger": #dc3545,
   "warning": #ffc107,
@@ -54,4 +54,13 @@ $btn-sizes: (
   sm: 0.25rem 0.5rem,
   md: 0.5rem 1rem,
   lg: 0.75rem 1.5rem,
+);
+
+$bp-aliases: (
+  xs: xsmall,
+  sm: small,
+  md: medium,
+  lg: large,
+  xl: xlarge,
+  xxl: xlarge,
 );

@@ -22,14 +22,15 @@
   border: 1px solid map-get($colors, "gray");
   border-radius: 4px;
   transition: border-color 0.3s ease;
+  box-sizing: border-box;
 
   &:focus {
-      outline: none;
-      border-color: map-get($colors, "primary");
+    outline: none;
+    border-color: map-get($colors, "primary");
   }
 
   &.is-invalid {
-      border-color: map-get($colors, "danger");
+    border-color: map-get($colors, "danger");
   }
 }
 

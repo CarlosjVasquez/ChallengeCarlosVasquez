@@ -16,16 +16,6 @@
   margin-left: (math.div($gutter-width, 2) * -1);
 }
 
-@mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (min-width: map-get($breakpoints, $breakpoint)) {
-      @content;
-    }
-  } @else {
-    @warn "Breakpoint '#{$breakpoint}' not found in \$breakpoints map.";
-  }
-}
-
 @mixin generate-button-color-classes() {
   @each $name, $color in $colors {
     .btn-#{$name} {
@@ -50,31 +40,11 @@
   }
 }
 
-@mixin respond-to($breakpoint) {
-  @if $breakpoint == xs {
-    @media (max-width: map-get($breakpoints, xsmall)) {
-      @content;
-    }
-  } @else if $breakpoint == sm {
-    @media (min-width: map-get($breakpoints, xsmall)) and (max-width: map-get($breakpoints, small)) {
-      @content;
-    }
-  } @else if $breakpoint == md {
-    @media (min-width: map-get($breakpoints, small)) and (max-width: map-get($breakpoints, medium)) {
-      @content;
-    }
-  } @else if $breakpoint == lg {
-    @media (min-width: map-get($breakpoints, medium)) and (max-width: map-get($breakpoints, large)) {
-      @content;
-    }
-  } @else if $breakpoint == xl {
-    @media (min-width: map-get($breakpoints, large)) and (max-width: map-get($breakpoints, xlarge)) {
-      @content;
-    }
-  } @else if $breakpoint == xxl {
-    @media (min-width: map-get($breakpoints, xlarge)) {
-      @content;
-    }
+@mixin respond-to($bp) {
+  $key: bp-resolve($bp);
+  $size: map-get($breakpoints, $key);
+  @media (min-width: $size) {
+    @content;
   }
 }
 

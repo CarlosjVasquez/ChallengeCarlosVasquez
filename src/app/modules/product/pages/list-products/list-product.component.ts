@@ -46,15 +46,15 @@ export class ListProductComponent implements OnDestroy {
       key: 'name',
       label: 'Nombre del Producto',
       type: 'text',
-      align: 'center',
-      width: 100,
+      align: 'start',
+      width: 200,
     },
     {
       key: 'description',
       label: 'Descripción',
       type: 'text',
-      align: 'center',
-      width: 100,
+      align: 'start',
+      width: 200,
       popover: 'Descripción corta del producto',
     },
     {
@@ -62,7 +62,7 @@ export class ListProductComponent implements OnDestroy {
       label: 'Fecha de liberación',
       type: 'date',
       align: 'start',
-      width: 100,
+      width: 200,
       popover: 'Fecha de liberación del producto',
     },
     {
@@ -70,7 +70,7 @@ export class ListProductComponent implements OnDestroy {
       label: 'Fecha de restructuración',
       type: 'date',
       align: 'start',
-      width: 100,
+      width: 250,
       popover:
         'Fecha de restructuración del producto 1 año después de la fecha de liberación',
     },

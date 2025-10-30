@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 
 export interface Option {
@@ -9,7 +10,7 @@ export interface Option {
 @Component({
   selector: 'dropdown',
   standalone: true,
-  imports: [IconComponent],
+  imports: [CommonModule, IconComponent],
   templateUrl: './dropdown.component.html',
   styleUrl: './dropdown.component.scss',
 })
@@ -19,8 +20,13 @@ export class DropdownComponent {
   @Input() label?: string = '';
   @Input() options: Option[] = [];
   @Output() onClickEventEmitter: EventEmitter<number> = new EventEmitter();
+  show: boolean = false;
 
   onClick(id: number) {
     this.onClickEventEmitter.emit(id);
+  }
+
+  handleClick() {
+    this.show = !this.show;
   }
 }
